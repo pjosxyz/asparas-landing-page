@@ -87,64 +87,45 @@ const testimonialsData: Testimonial[] = [
 ];
 ---
 
-<div class="flex gap-3 overflow-hidden w-full cards">
-  {
-    testimonialsData.map((testimonial) => (
-      <TestimonialCard
-        id={testimonial.id}
-        name={testimonial.name}
-        testimonial={testimonial.testimonial}
-        location={testimonial.location}
-        imgStr={testimonial.imgStr}
-      />
-    ))
-  }
+<div class="cards-wrapper overflow-hidden flex w-full">
+  <div class="flex gap-3 cards pl-3 will-change-auto">
+    {
+      testimonialsData.map((testimonial) => (
+        <TestimonialCard
+          id={testimonial.id}
+          name={testimonial.name}
+          testimonial={testimonial.testimonial}
+          location={testimonial.location}
+          imgStr={testimonial.imgStr}
+        />
+      ))
+    }
+  </div>
 </div>
 
-<!-- CHAT GPT WASTE OF TIME -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
 <script>
-  // GSAP 3 syntax
-  gsap.registerPlugin(ScrollTrigger);
+  import { gsap } from "gsap";
 
+  document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelector(".cards");
-  const cardWidth = document.querySelector(".card").offsetWidth;
-  const totalCardsWidth = cardWidth * 12; // Adjust number of cards accordingly
 
-  // Calculate how much we need to move the cards container to appear as an infinite scroll
-  const moveX = totalCardsWidth - window.innerWidth;
+  if(!cards) return;
+  
+  const clone = cards?.cloneNode(true);
+  cards.parentNode?.appendChild(clone);
 
-  // Create the animation
-  const scrollAnimation = gsap.to(cards, {
-    x: -moveX,
+  let totalWidth = cards.scrollWidth * 2;
+  let originalWidth = cards.scrollWidth;
+
+  gsap.to([cards, clone], {
+    x: `-=${originalWidth}`,
     ease: "none",
-    repeat: -1, // Infinite loop
-    duration: 10, // Duration of one loop; adjust for speed
-    paused: true, // Start paused so we can control play/pause on hover
+    duration: 60,
+    repeat: -1,
+    onRepeat: () => {
+      gsap.set([cards, clone], {x: 0});
+    },
   });
+});
 
-  // Function to calculate dynamic duration based on remaining distance
-  const calculateDuration = () => {
-    const currentX = gsap.getProperty(cards, "x");
-    return ((moveX + currentX) / moveX) * 10; // Adjust '10' based on your initial duration
-  };
-
-  // Play animation on load
-  scrollAnimation.play();
-
-  // Slow down and stop on hover
-  cards.addEventListener("mouseenter", () => {
-    gsap.to(scrollAnimation, {
-      duration: calculateDuration(),
-      ease: "power1.out",
-      progress: 1,
-    });
-  });
-
-  // Resume scrolling on mouse leave
-  cards.addEventListener("mouseleave", () => {
-    scrollAnimation.play(0); // Reset and play from start
-  });
 </script>
-

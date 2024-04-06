@@ -1,0 +1,102 @@
+---
+import TestimonialCard from "../components/TestimonialCard.astro";
+import type { Testimonial } from "../types/types.ts";
+
+const testimonialsData: Testimonial[] = [
+  {
+    id: 1,
+    name: "Clive Woodward",
+    location: "Hurstville",
+    testimonial:
+      "Using Asparas helped me sell my spare place very quickly. Too easy.",
+    imgStr: "clive_m_50s",
+  },
+  {
+    id: 2,
+    name: "Duncan Williamson",
+    location: "Clovelly",
+    testimonial:
+      "Finding a decent place is usually a pain, but Asparas made it easy.",
+    imgStr: "duncan_m_30s",
+  },
+  {
+    id: 3,
+    name: "Jonah Murray",
+    location: "Tamarama",
+    testimonial:
+      "I was able to find a place in a great location, really quickly.",
+    imgStr: "jonah_m_30s",
+  },
+  {
+    id: 5,
+    name: "Larry Latham",
+    location: "Bondi",
+    testimonial: "Never flipped a place so quickly.",
+    imgStr: "larry_m_40s",
+  },
+  {
+    id: 6,
+    name: "Melanie Gardner",
+    location: "Coogee",
+    testimonial: "Renting a place out was a breeze with Asparas.",
+    imgStr: "melanie_f_30s",
+  },
+  {
+    id: 7,
+    name: "Milandra Singh",
+    location: "Newtown",
+    testimonial: "My go to for finding a place to rent.",
+    imgStr: "milandra_f_30s",
+  },
+  {
+    id: 8,
+    name: "Nigel Tufnell",
+    location: "Manly",
+    testimonial:
+      "I usually use a real estate agent, but Asparas was so much easier.",
+    imgStr: "nigel_m_40s",
+  },
+  {
+    id: 9,
+    name: "Sandra Sweeney",
+    location: "Bondi",
+    testimonial: "How easy was that? Found a place in no time.",
+    imgStr: "sandra_f_50s",
+  },
+  {
+    id: 10,
+    name: "Sunny Fong",
+    location: "Rose Bay",
+    testimonial: "Never thought I'd be able to find a place so quickly.",
+    imgStr: "sunny_f_40s",
+  },
+  {
+    id: 11,
+    name: "Tina Duckworth",
+    location: "Bronte",
+    testimonial: "I wish I could sell my place every day.",
+    imgStr: "tina_f_50s",
+  },
+  {
+    id: 12,
+    name: "Tony Blake",
+    location: "Randwick",
+    testimonial: "Too fucking easy, mate.",
+    imgStr: "tony_m_50s",
+  },
+];
+---
+
+<div class="flex gap-3 overflow-hidden">
+  {
+    testimonialsData.map((testimonial) => (
+      <TestimonialCard
+        id={testimonial.id}
+        name={testimonial.name}
+        testimonial={testimonial.testimonial}
+        location={testimonial.location}
+        imgStr={testimonial.imgStr}
+      />
+    ))
+  }
+</div>

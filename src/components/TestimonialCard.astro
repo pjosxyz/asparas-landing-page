@@ -1,0 +1,35 @@
+---
+import type { Testimonial } from "../types/types";
+
+interface Props extends Testimonial {}
+
+const { id, name, location, testimonial, imgStr } = Astro.props;
+---
+
+<article class="bg-slate-50 rounded-xl p-4 max-w-[260px] min-w-[260px]">
+  <div
+    class="w-12 h-12 border-2 border-slate-50 shadow-lg rounded-full mb-5 overflow-hidden"
+  >
+    <picture>
+      <source
+        srcset={`images/testimonials/96x96/${imgStr}.webp 2x, images/testimonials/48x48/${imgStr}.webp 1x`}
+        type="image/webp"
+      />
+      <!-- Fallback for browsers that do not support WebP or AVIF -->
+      <img
+        src={`images/testimonials/originals/${imgStr}.png`}
+        width="48"
+        height="48"
+        alt={`A photograph of Asparas user ${name}`}
+      />
+    </picture>
+  </div>
+  <!-- testimonial -->
+  <p class="text-slate-900 text-lg mb-6 font-medium">
+    {testimonial}
+  </p>
+  <!-- username -->
+  <p class="font-semibold text-violet-500">{name}</p>
+  <!-- location -->
+  <p class="text-violet-500">{location}</p>
+</article>

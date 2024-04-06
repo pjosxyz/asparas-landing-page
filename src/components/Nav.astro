@@ -1,0 +1,40 @@
+---
+import Button from "./Button.astro";
+import AsparasLogo from "./svg/AsparasLogo.astro";
+import NavIcon from "./svg/NavIcon.astro";
+---
+
+<nav
+  class="flex items-center justify-between px-3 py-2 border-b border-slate-300 dark:border-slate-600 relative"
+>
+  <div class="flex items-center gap-2">
+    <NavIcon />
+    <AsparasLogo />
+  </div>
+  <button
+    class="text-violet-600 dark:text-violet-50 border-2 border-violet-600 px-3 py-2 rounded-lg mob-nav font-semibold"
+    >Launch app</button
+  >
+
+  <!-- mobile -->
+  <!-- <div
+    class="absolute bg-slate-800 top-0 right-[100%] w-2/3 border-l border-slate-600 h-dvh p-4"
+  >
+    <ul class="text-slate-800 dark:text-white flex flex-col gap-7">
+      <li>Link one</li>
+      <li>Link two</li>
+      <li>Link three</li>
+    </ul>
+  </div> -->
+</nav>
+
+<script>
+  const mobNav = document.querySelector(".mob-nav");
+
+  if (mobNav) {
+    mobNav.addEventListener("click", () => {
+      //   document.querySelector(".absolute")?.classList.toggle("hidden");
+      console.log("clicked");
+    });
+  }
+</script>

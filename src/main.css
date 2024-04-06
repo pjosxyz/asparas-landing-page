@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-bkg: 210deg 40% 98%;
+        --color-brand: 258deg 90% 66%;
+        --color-logotext: 222deg 47% 11%;
+        /* button text... */
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --color-bkg: 222deg 47% 11%;
+            --color-brand: 258deg 90% 66%;
+            --color-logotext: 250deg 100% 98%;
+            /* button text... */
+        }
+    }
+}

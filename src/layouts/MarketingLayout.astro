@@ -1,0 +1,21 @@
+---
+import Header from "../components/Header.astro";
+const { title } = Astro.props;
+import "../main.css";
+import "@fontsource-variable/manrope";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" content={title} />
+  </head>
+  <body class="bg-bkg font-manro">
+    <Header />
+    <main class="container mx-auto px-3">
+      <slot />
+      <!-- your content is injected here -->
+    </main>
+  </body>
+</html>
